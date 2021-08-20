@@ -53,8 +53,6 @@ function positionNow(position) {
   axios.get(apiURL).then(showTemp);
 }
 
-navigator.geolocation.getCurrentPosition(positionNow);
-
 let form = document.querySelector("#cityForm");
 form.addEventListener("submit", cityChange);
 
@@ -62,8 +60,10 @@ function changeCurCity() {
   let currentCity = document.querySelector("#city");
   currentCity.innerHTML = "Your current location :confetti_ball: ";
 }
-function getCurrentLocation(event) {
+
+function getCurLocation(event) {
   event.preventDefault();
+  navigator.geolocation.getCurrentPosition(positionNow);
 }
 
 let currentLoc = document.querySelector("#currentLocationButton");
