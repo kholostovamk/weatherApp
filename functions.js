@@ -48,13 +48,6 @@ function cityChange(event) {
   cityTemp();
 }
 
-function showTemp(response) {
-  let temp = Math.round(response.data.main.temp);
-  console.log(temp);
-  let heading = document.querySelector("#temperature");
-  heading.innerHTML = temp;
-}
-
 function positionNow(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
