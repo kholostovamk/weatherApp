@@ -62,6 +62,9 @@ function changeCurCity() {
   let currentCity = document.querySelector("#city");
   currentCity.innerHTML = "Your current location :confetti_ball: ";
 }
+function getCurrentLocation(event) {
+  event.preventDefault();
+}
 
 let currentLoc = document.querySelector("#currentLocationButton");
-currentLoc.addEventListener("click", showTemp);
+currentLoc.addEventListener("click", getCurLocation);
