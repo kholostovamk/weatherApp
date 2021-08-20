@@ -28,7 +28,7 @@ far.addEventListener("click", convToF);
 function showTemp(response) {
   let temp = Math.round(response.data.main.temp);
   console.log(temp);
-  heading = document.querySelector("#temperature");
+  let heading = document.querySelector("#temperature");
   heading.innerHTML = temp;
 }
 
@@ -74,7 +74,4 @@ function changeCurCity() {
 }
 
 let currentLoc = document.querySelector("#currentLocationButton");
-currentLoc.addEventListener("click", () => {
-  showTemp();
-  changeCurCity();
-});
+currentLoc.addEventListener("click", showTemp);
