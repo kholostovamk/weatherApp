@@ -26,12 +26,9 @@ cel.addEventListener("click", convToCel);
 far.addEventListener("click", convToF);
 
 function showTemp(response) {
-  let currentCity = document.querySelector("#city");
-  currentCity.innerHTML = response.data.name;
-
   let temp = Math.round(response.data.main.temp);
   console.log(temp);
-  let heading = document.querySelector("#temperature");
+  heading = document.querySelector("#temperature");
   heading.innerHTML = temp;
 }
 
@@ -51,6 +48,13 @@ function cityChange(event) {
   cityTemp();
 }
 
+function showTemp(response) {
+  let temp = Math.round(response.data.main.temp);
+  console.log(temp);
+  let heading = document.querySelector("#temperature");
+  heading.innerHTML = temp;
+}
+
 function positionNow(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -59,13 +63,18 @@ function positionNow(position) {
   axios.get(apiURL).then(showTemp);
 }
 
+navigator.geolocation.getCurrentPosition(positionNow);
+
 let form = document.querySelector("#cityForm");
 form.addEventListener("submit", cityChange);
 
-function getCurrLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(positionNow);
+function changeCurCity() {
+  let currentCity = document.querySelector("#city");
+  currentCity.innerHTML = "Your current location :confetti_ball: ";
 }
 
 let currentLoc = document.querySelector("#currentLocationButton");
-currentLoc.addEventListener("click", getCurrLocation);
+currentLoc.addEventListener("click", () => {
+  showTemp();
+  changeCurCity();
+});
