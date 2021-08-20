@@ -1,0 +1,92 @@
+body {
+  text-align: center;
+  line-height: 1.6;
+  background-color: rgb(87, 112, 162, 0.8);
+  color: #ffffff;
+  font-family: "Roboto Slab", serif;
+}
+h1 {
+  text-shadow: 10px 12px 7px rgba(225, 228, 235, 0.3);
+  color: #f7f7f7;
+  text-align: left;
+  margin-left: 45px;
+  margin-top: 25px;
+}
+h3 {
+  padding: 20px;
+  text-align: center;
+  color: #335484;
+}
+form {
+  text-align: left;
+  margin-left: 45px;
+  width: 80%;
+  padding: 5px;
+}
+#time {
+  text-align: left;
+  margin-left: 45px;
+  margin-bottom: 10px;
+}
+
+.container {
+  padding-right: 50px;
+  padding-left: 50px;
+}
+.col {
+  flex: 10%;
+  padding: 10px;
+}
+.todayTomorrow-weather {
+  text-align: left;
+}
+
+.tomorrow,
+.today {
+  margin: 5px;
+  color: #335484;
+}
+
+.today,
+.tomorrow,
+.nextWeekWeather {
+  border: solid #ffffff 2px;
+  border-radius: 20px;
+}
+
+.nextWeekWeather {
+  margin-top: 20px;
+  margin-left: 45px;
+  margin-right: 45px;
+  color: #f7f7f7;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.clouds,
+.rain {
+  display: block;
+
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 60%;
+  box-shadow: 0 0 8px 8px white;
+}
+.btn {
+  background-color: rgb(73, 113, 178);
+  border-color: #ffffff;
+  border-radius: 30px;
+  height: 34px;
+  position: relative;
+  bottom: 3.5px;
+}
+.form-control-sm {
+  border-radius: 30px;
+  height: 34px;
+}
+.weatherReading {
+  color: #ffffff;
+}
+.data {
+  color: #243c61;
+}

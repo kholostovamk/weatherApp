@@ -1,0 +1,381 @@
+let now = new Date();
+let time = document.querySelector("#time");
+let days = [Sun, Monday, Tue, Wed, Thu, Fri, Sat];
+let hour = now.getHours();
+let minutes = now.getMinutes();
+function minutesZero(now) {
+  return (now.getMinutes() < 10 ? "0" : "") + now.getMinutes();
+}
+time.innerHTML = ${days[now.getDay()]}, ${hour}: ${minutesZero(now)};
+
+function convToCel(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = 25;
+}
+
+function convToF(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = 77;
+}
+
+let cel = document.querySelector("#cel");
+let far = document.querySelector("#far");
+cel.addEventListener("click", convToCel);
+far.addEventListener("click", convToF);
+
+function showTemp(response) {
+  let temp = Math.round(response.data.main.temp);
+  console.log(temp);
+  heading = document.querySelector("#temperature");
+  heading.innerHTML = temp;
+}
+
+function cityChange(event) {
+  event.preventDefault();
+  let input = document.querySelector("#cityChanger");
+  let h1 = document.querySelector("#city");
+  h1.innerHTML = input.value;
+  console.log(input.value);
+  function cityTemp(position) {
+    let apiKey = "2625d6a8fc1f0d27c67c06204d7105e5";
+    let unit = "metric";
+    let apiURL = https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apiKey}&units=${unit};
+    axios.get(apiURL).then(showTemp);
+  }
+
+  cityTemp();
+}
+
+function showTemp(response) {
+  let temp = Math.round(response.data.main.temp);
+  console.log(temp);
+  heading = document.querySelector("#temperature");
+  heading.innerHTML = temp;
+}
+
+function positionNow(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiURL = https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=2625d6a8fc1f0d27c67c06204d7105e5;
+  console.log(apiURL);
+  axios.get(apiURL).then(showTemp);
+}
+
+navigator.geolocation.getCurrentPosition(positionNow);
+
+let form = document.querySelector("#cityForm");
+form.addEventListener("submit", cityChange);
+
+function changeCurCity() {
+  let currentCity = document.querySelector("#city");
+  currentCity.innerHTML = "Your current location :confetti_ball: ";
+}
+
+let currentLoc = document.querySelector("#currentLocationButton");
+currentLoc.addEventListener("click", () => {
+  showTemp();
+  changeCurCity();
+});
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <title>weatherApp</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1 id="city" >Moscow</h1>
+        <span id="time"></span>
+        <form id="cityForm">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control-sm"
+              id="cityChanger"
+              placeholder="Choose a different city"
+            />
+            <button type="submit" class="btn id="submitButton" btn-primary">Change</button>
+            <button type="button" class="btn id="currentLocationButton" btn-primary">Current Location</button>
+          </div>
+        </form>
+        <div class="container todayTomorrow-weather">
+          <div class="row">
+            <div class="col today">
+              <h3><strong>TODAY</strong></h3>
+              <img
+                class="clouds"
+                src="src/media/cloudyweather.png"
+                alt="rain"
+                width="300px
+                "
+              />
+              <div class="weatherReading">
+                <span class="temperature" id = "temperature">25</span>°
+                <span><a href="#" id="cel">C<a/> 
+                 /
+                 <span><a href="#" id="far">F<a/>
+                </span>
+                <br />
+                Clouds
+                <br />
+                H: <span class="data">27° L:20°</span>
+                <br />
+                SUNRISE: <span class="data">5:23am</span>
+                <br />
+                SUNSET: <span class="data">8:17pm</span>
+                <br />
+                CHANCE OF RAIN: <span class="data">20%</span>
+              </div>
+            </div>
+
+            <div class="col tomorrow">
+              <h3><strong>TOMORROW</strong></h3>
+              <img
+                class="rain"
+                src="src/media/rain.jpg"
+                alt="rain"
+                width="300px
+                "
+              />
+              <div class="weatherReading">
+                21° 
+                <br />
+                Rain
+                <br />
+                H: <span class="data">24° L:18°</span>
+                <br />
+                SUNRISE: <span class="data">5:23am</span>
+                <br />
+                SUNSET: <span class="data">8:17pm</span>
+                <br />
+                CHANCE OF RAIN: <span class="data">100%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col nextWeekWeather">
+          <div class="row bottom">
+            <h3><strong>NEXT WEEK</strong></h3>
+            <div class="col">
+              <h5>Monday</h5>
+              <div class="data">23°/20°</div>
+              <div class="data">Humid 😔🏖:hotsprings:️</div>
+            </div>
+
+            <div class="col">
+              <h5>Tuesday</h5>
+              <div class="data">19°/15°</div>
+              <div class="data">Windy day 🌫🌪🌡</div>
+            </div>
+
+            <div class="col">
+              <h5>Wednesday</h5>
+              <div class="data">22°/19°</div>
+              <div class="data">Sunny side up! :sunny:</div>
+            </div>
+
+            <div class="col">
+              <h5>Thursday</h5>
+              <div class="data">20°/16°</div>
+              <div class="data">It's Going to Be Chilly 🌪🌨🌡</div>
+            </div>
+            <div class="col">
+              <h5>Friday</h5>
+              <div class="data">19°/15°</div>
+              <div class="data">Rain is coming!🌧</div>
+            </div>
+            <div class="col">
+              <h5>Saturday</h5>
+              <div class="data">28°/25°</div>
+              <div class="data">It's Going to Be Hot :sweat::sunny:️🌡</div>
+            </div>
+            <div class="col">
+              <h5>Sunday</h5>
+              <div class="data">20°/17°</div>
+              <div class="data">Storm warning!:warning:️:cyclone:</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="functions.js"></script>
+  </body>
+</html>
+ (edited) 
+:eyes:
+1
+
+
+
+
+
+1 reply
+
+Bruno:verified:  4 days ago
+Hi! :slightly_smiling_face:
+I had to make multiple changes, so please compare both versions :wink:
+HTML
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <title>weatherApp</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1 id="city" >Moscow</h1>
+        <span id="time"></span>
+        <form id="cityForm">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control-sm"
+              id="cityChanger"
+              placeholder="Choose a different city"
+            />
+            <button type="submit" class="btn id="submitButton" btn-primary">Change</button>
+            <button type="button" class="btn btn-primary" id="currentLocationButton" >Current Location</button>
+          </div>
+        </form>
+        <div class="container todayTomorrow-weather">
+          <div class="row">
+            <div class="col today">
+              <h3><strong>TODAY</strong></h3>
+              <img
+                class="clouds"
+                src="src/media/cloudyweather.png"
+                alt="rain"
+                width="300px
+                "
+              />
+              <div class="weatherReading">
+                <span class="temperature" id = "temperature">25</span>°
+                <span><a href="#" id="cel">C<a/> 
+                 /
+                 <span><a href="#" id="far">F<a/>
+                </span>
+                <br />
+                Clouds
+                <br />
+                H: <span class="data">27° L:20°</span>
+                <br />
+                SUNRISE: <span class="data">5:23am</span>
+                <br />
+                SUNSET: <span class="data">8:17pm</span>
+                <br />
+                CHANCE OF RAIN: <span class="data">20%</span>
+              </div>
+            </div>
+
+            <div class="col tomorrow">
+              <h3><strong>TOMORROW</strong></h3>
+              <img
+                class="rain"
+                src="src/media/rain.jpg"
+                alt="rain"
+                width="300px
+                "
+              />
+              <div class="weatherReading">
+                21° 
+                <br />
+                Rain
+                <br />
+                H: <span class="data">24° L:18°</span>
+                <br />
+                SUNRISE: <span class="data">5:23am</span>
+                <br />
+                SUNSET: <span class="data">8:17pm</span>
+                <br />
+                CHANCE OF RAIN: <span class="data">100%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col nextWeekWeather">
+          <div class="row bottom">
+            <h3><strong>NEXT WEEK</strong></h3>
+            <div class="col">
+              <h5>Monday</h5>
+              <div class="data">23°/20°</div>
+              <div class="data">Humid 😔🏖:hotsprings:️</div>
+            </div>
+
+            <div class="col">
+              <h5>Tuesday</h5>
+              <div class="data">19°/15°</div>
+              <div class="data">Windy day 🌫🌪🌡</div>
+            </div>
+
+            <div class="col">
+              <h5>Wednesday</h5>
+              <div class="data">22°/19°</div>
+              <div class="data">Sunny side up! :sunny:</div>
+            </div>
+
+            <div class="col">
+              <h5>Thursday</h5>
+              <div class="data">20°/16°</div>
+              <div class="data">It's Going to Be Chilly 🌪🌨🌡</div>
+            </div>
+            <div class="col">
+              <h5>Friday</h5>
+              <div class="data">19°/15°</div>
+              <div class="data">Rain is coming!🌧</div>
+            </div>
+            <div class="col">
+              <h5>Saturday</h5>
+              <div class="data">28°/25°</div>
+              <div class="data">It's Going to Be Hot :sweat::sunny:️🌡</div>
+            </div>
+            <div class="col">
+              <h5>Sunday</h5>
+              <div class="data">20°/17°</div>
+              <div class="data">Storm warning!:warning:️:cyclone:</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="functions.js"></script>
+  </body>
+</html>
