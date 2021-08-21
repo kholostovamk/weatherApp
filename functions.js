@@ -26,7 +26,11 @@ cel.addEventListener("click", convToCel);
 far.addEventListener("click", convToF);
 
 function showTemp(response) {
+  let currentCity = document.querySelector("#city");
+  currentCity.innerHTML = response.data.name;
+
   let temp = Math.round(response.data.main.temp);
+  console.log(temp);
   let heading = document.querySelector("#temperature");
   heading.innerHTML = temp;
 }
@@ -36,6 +40,7 @@ function cityChange(event) {
   let input = document.querySelector("#cityChanger");
   let h1 = document.querySelector("#city");
   h1.innerHTML = input.value;
+  console.log(input.value);
   function cityTemp(position) {
     let apiKey = "2625d6a8fc1f0d27c67c06204d7105e5";
     let unit = "metric";
@@ -50,21 +55,17 @@ function positionNow(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=2625d6a8fc1f0d27c67c06204d7105e5`;
+  console.log(apiURL);
   axios.get(apiURL).then(showTemp);
 }
 
 let form = document.querySelector("#cityForm");
 form.addEventListener("submit", cityChange);
 
-function changeCurCity() {
-  let currentCity = document.querySelector("#city");
-  currentCity.innerHTML = "Your current location :confetti_ball: ";
-}
-
-function getCurLocation(event) {
+function getCurrLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(positionNow);
 }
 
 let currentLoc = document.querySelector("#currentLocationButton");
-currentLoc.addEventListener("click", getCurLocation);
+currentLoc.addEventListener("click", getCurrLocation);
