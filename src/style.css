@@ -1,4 +1,18 @@
+body {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
 #outline {
   max-width: 600px;
+  border: solid;
+}
+.col {
+  border: solid;
+}
+.col-md-6 {
   border: solid;
 }
