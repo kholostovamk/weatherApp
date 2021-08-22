@@ -22,7 +22,7 @@
   </head>
   <body>
    
-    <div class="container-sm">
+    <div class="container-sm" id="outline">
       <div class="row">
         <h1 id="city" >Moscow</h1>
         <span id="time"></span>
@@ -40,6 +40,7 @@
         </form>
         <div class="container todayTomorrow-weather">
           <div class="row">
+
             <div class="col today">
               <h3><strong>TODAY</strong></h3>
               <img
@@ -55,19 +56,18 @@
                  /
                  <span><a href="#" id="far">F<a/>
                 </span>
-                <br />
-                Clouds
-                <br />
-                H: <span class="data">27° L:20°</span>
-                <br />
-                SUNRISE: <span class="data">5:23am</span>
-                <br />
-                SUNSET: <span class="data">8:17pm</span>
-                <br />
-                CHANCE OF RAIN: <span class="data">20%</span>
+                <ul>
+                  <li>Clouds</li>
+                  <li>H: 27</li>
+                  <li>L: 20</li>
+                  <li>Sunrise: </li>
+                  <li>SUNSET: </li> 
+                  <li>Chance of rain</li>
+                  <li>Sunrise: </li>
+                </ul>
               </div>
             </div>
-
+            
             <div class="col tomorrow">
               <h3><strong>TOMORROW</strong></h3>
               <img
@@ -78,17 +78,20 @@
                 "
               />
               <div class="weatherReading">
-                21° 
-                <br />
-                Rain
-                <br />
-                H: <span class="data">24° L:18°</span>
-                <br />
-                SUNRISE: <span class="data">5:23am</span>
-                <br />
-                SUNSET: <span class="data">8:17pm</span>
-                <br />
-                CHANCE OF RAIN: <span class="data">100%</span>
+                <span class="temperature" id = "temperature">25</span>°
+                <span><a href="#" id="cel">C<a/> 
+                 /
+                 <span><a href="#" id="far">F<a/>
+                </span>
+                <ul>
+                  <li>Clouds</li>
+                  <li>H: 27</li>
+                  <li>L: 20</li>
+                  <li>Sunrise: </li>
+                  <li>SUNSET: </li> 
+                  <li>Chance of rain</li>
+                  <li>Sunrise: </li>
+                </ul>
               </div>
             </div>
           </div>
