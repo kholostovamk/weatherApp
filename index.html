@@ -18,15 +18,17 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap"
       rel="stylesheet"
     />
-    <script src="https://kit.fontawesome.com/30ac1f705f.js" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://kit.fontawesome.com/30ac1f705f.js"
+      crossorigin="anonymous"
+    ></script>
+
     <title>weatherApp</title>
   </head>
   <body>
-   
     <div class="container-sm" id="outline">
       <div class="row">
-        <h1 id="city" >Moscow</h1>
+        <h1 id="city">Moscow</h1>
         <span id="time"></span>
         <form id="cityForm">
           <div class="mb-3">
@@ -36,54 +38,52 @@
               id="cityChanger"
               placeholder="Choose a different city"
             />
-            <button type="submit" class="btn btn-primary" id="submitButton">Change</button>
-            <button type="button" class="btn btn-primary" id="currentLocationButton" >Current Location</button>
+            <button type="submit" class="btn btn-primary" id="submitButton">
+              Change
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="currentLocationButton"
+            >
+              Current Location
+            </button>
           </div>
         </form>
         <div class="container todayTomorrow-weather">
           <div class="row">
-            <div class="col today">
+            <div class="col-md-6 today">
               <h3><strong>TODAY</strong></h3>
               <i class="fas fa-sun"></i>
-              <div class="weatherReading">
-                <span class="temperature" id = "temperature">25</span>°
-                <span><a href="#" id="cel">C<a/> 
-                 /
-                 <span><a href="#" id="far">F<a/>
-                </span>
-                <ul>
-                  <li>Clouds</li>
-                  <li>H: 27</li>
-                  <li>L: 20</li>
-                  <li>Sunrise: </li>
-                  <li>SUNSET: </li> 
-                  <li>Chance of rain</li>
-                  <li>Sunrise: </li>
-                </ul>
-              </div>
+              <span class="weatherReading"></span>
+              <span class="temperature" id="temperature">25</span>°
+              <a href="#" id="cel">C</a> /<a href="#" id="far">F</a>
+              <ul>
+                <li>Clouds</li>
+                <li>H: 27</li>
+                <li>L: 20</li>
+                <li>Sunrise:</li>
+                <li>SUNSET:</li>
+                <li>Chance of rain</li>
+                <li>Sunrise:</li>
+              </ul>
             </div>
-       
-            <div class="col tomorrow">
+
+            <div class="col-md-6 tomorrow">
               <h3><strong>TOMORROW</strong></h3>
-              
               <i class="fas fa-cloud"></i>
-              
-              <div class="weatherReading">
-                <span class="temperature" id = "temperature">25</span>°
-                <span><a href="#" id="cel">C<a/> 
-                 /
-                 <span><a href="#" id="far">F<a/>
-                </span>
-                <ul>
-                  <li>Clouds</li>
-                  <li>H: 27</li>
-                  <li>L: 20</li>
-                  <li>Sunrise: </li>
-                  <li>SUNSET: </li> 
-                  <li>Chance of rain</li>
-                  <li>Sunrise: </li>
-                </ul>
-              </div>
+              <span class="weatherReading"></span>
+              <span class="temperature" id="temperature">25</span>°
+              <a href="#" id="cel">C</a> /<a href="#" id="far">F</a>
+              <ul>
+                <li>Clouds</li>
+                <li>H: 27</li>
+                <li>L: 20</li>
+                <li>Sunrise:</li>
+                <li>SUNSET:</li>
+                <li>Chance of rain</li>
+                <li>Sunrise:</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@
         </div>
       </div>
     </div>
-    
+
     <script type="text/javascript" src="functions.js"></script>
   </body>
 </html>
