@@ -1,18 +1,42 @@
 body {
   text-align: center;
+  font-family: "Pacifico", cursive;
+  background-color: #009ec68a;
+  background-size: 200%;
+  color: #014042;
 }
 
 ul {
   list-style-type: none;
+  text-transform: uppercase;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: left;
 }
 
 #outline {
-  max-width: 600px;
-  border: solid;
+  max-width: 700px;
+  margin-top: 30px;
+  background-color: #dbbca0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
-.col {
-  border: solid;
+
+.btn {
+  background-color: #027d82;
+  border: #003536 solid;
+  border-width: 1px;
+  margin: 5px;
 }
-.col-md-6 {
+
+.btn:hover {
+  background-color: #004041;
   border: solid;
+  border-width: 0.5px;
+}
+.col,
+.col-md-6,
+#outline {
+  border: solid #3c4043;
+  border-radius: 20px;
+  border-width: 1px;
 }
