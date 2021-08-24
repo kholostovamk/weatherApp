@@ -14,8 +14,12 @@ ul {
   text-align: left;
 }
 
+h3 {
+  color: #fff;
+}
+
 #outline {
-  max-width: 700px;
+  max-width: 750px;
   margin-top: 30px;
   background-color: #dbbca0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
@@ -26,6 +30,7 @@ ul {
   border: #003536 solid;
   border-width: 1px;
   margin: 5px;
+  transition: all 300ms ease-out;
 }
 
 .btn:hover {
@@ -39,4 +44,20 @@ ul {
   border: solid #3c4043;
   border-radius: 20px;
   border-width: 1px;
+}
+
+.today,
+.tomorrow {
+  border: none;
+}
+
+.nextWeekWeather {
+  border: none;
+  margin: 10px;
+}
+
+.day {
+  margin: 2.5px;
+  border-color: #fff;
+  box-shadow: 3px 3px 1px #027d82;
 }
