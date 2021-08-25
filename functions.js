@@ -69,3 +69,18 @@ function getCurrLocation(event) {
 
 let currentLoc = document.querySelector("#currentLocationButton");
 currentLoc.addEventListener("click", getCurrLocation);
+
+function moscowTemper(response) {
+  let moscowTemp = Math.round(response.data.main.temp);
+  let initialTemp = document.querySelector("#temperature");
+  initialTemp.innerHTML = moscowTemp;
+}
+
+function positionMoscow(position) {
+  let apiURL =
+    "https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=2625d6a8fc1f0d27c67c06204d7105e5";
+  console.log(apiURL);
+  axios.get(apiURL).then(moscowTemper);
+}
+
+positionMoscow();
