@@ -8,7 +8,7 @@ body {
 
 ul {
   list-style-type: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
   text-align: left;

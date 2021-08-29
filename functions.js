@@ -72,8 +72,11 @@ currentLoc.addEventListener("click", getCurrLocation);
 
 function moscowTemper(response) {
   let moscowTemp = Math.round(response.data.main.temp);
+  let moscowWind = Math.round(response.data.wind.speed);
+  let initialWind = document.querySelector("#wind");
   let initialTemp = document.querySelector("#temperature");
   initialTemp.innerHTML = moscowTemp;
+  initialWind.innerHTML = moscowWind;
 }
 
 function positionMoscow(position) {
