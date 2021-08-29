@@ -28,11 +28,24 @@ far.addEventListener("click", convToF);
 function showTemp(response) {
   let currentCity = document.querySelector("#city");
   currentCity.innerHTML = response.data.name;
-
   let temp = Math.round(response.data.main.temp);
-  console.log(temp);
+  let wind = Math.round(response.data.wind.speed);
+  let weather = response.data.weather[0].main;
+  let humidity = response.data.main.humidity;
+  let icon = response.data.weather[0].icon;
   let heading = document.querySelector("#temperature");
+  let windToday = document.querySelector("#wind");
+  let weatherToday = document.querySelector("#weatherType");
+  let iconToday = document.querySelector("#iconToday");
+  let humidityToday = document.querySelector("#humidity");
   heading.innerHTML = temp;
+  windToday.innerHTML = wind;
+  weatherToday.innerHTML = weather;
+  humidityToday.innerHTML = humidity;
+  iconToday.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@2x.png`
+  );
 }
 
 function cityChange(event) {
@@ -77,6 +90,18 @@ function moscowTemper(response) {
   let initialTemp = document.querySelector("#temperature");
   initialTemp.innerHTML = moscowTemp;
   initialWind.innerHTML = moscowWind;
+  let moscowWeather = response.data.weather[0].main;
+  let moscowHumidity = response.data.main.humidity;
+  let moscowIcon = response.data.weather[0].icon;
+  let moscowWeatherToday = document.querySelector("#weatherType");
+  let moscowIconToday = document.querySelector("#iconToday");
+  let moscowHumidityToday = document.querySelector("#humidity");
+  moscowWeatherToday.innerHTML = moscowWeather;
+  moscowHumidityToday.innerHTML = moscowHumidity;
+  moscowIconToday.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${moscowIcon}@2x.png`
+  );
 }
 
 function positionMoscow(position) {
