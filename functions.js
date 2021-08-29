@@ -26,6 +26,7 @@ cel.addEventListener("click", convToCel);
 far.addEventListener("click", convToF);
 
 function showTemp(response) {
+  celcTemp = Math.round(response.data.main.temp);
   let currentCity = document.querySelector("#city");
   currentCity.innerHTML = response.data.name;
   let temp = Math.round(response.data.main.temp);
@@ -84,6 +85,7 @@ let currentLoc = document.querySelector("#currentLocationButton");
 currentLoc.addEventListener("click", getCurrLocation);
 
 function moscowTemper(response) {
+  celcTemp = Math.round(response.data.main.temp);
   let moscowTemp = Math.round(response.data.main.temp);
   let moscowWind = Math.round(response.data.wind.speed);
   let initialWind = document.querySelector("#wind");
@@ -111,4 +113,25 @@ function positionMoscow(position) {
   axios.get(apiURL).then(moscowTemper);
 }
 
+let celcTemp = null;
+
 positionMoscow();
+
+function displayFahrTemp(event) {
+  event.preventDefault();
+  let fahrTemp = (celcTemp * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fahrTemp);
+}
+
+function displayCelcTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = celcTemp;
+}
+
+let fahrLink = document.querySelector("#far");
+fahrLink.addEventListener("click", displayFahrTemp);
+
+let celcLink = document.querySelector("#cel");
+fahrLink.addEventListener("click", displayCelcTemp);
