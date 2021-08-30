@@ -14,17 +14,6 @@ function convToCel(event) {
   temperatureElement.innerHTML = 25;
 }
 
-function convToF(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 77;
-}
-
-let cel = document.querySelector("#cel");
-let far = document.querySelector("#far");
-cel.addEventListener("click", convToCel);
-far.addEventListener("click", convToF);
-
 function showTemp(response) {
   celcTemp = Math.round(response.data.main.temp);
   let currentCity = document.querySelector("#city");
@@ -134,4 +123,4 @@ let fahrLink = document.querySelector("#far");
 fahrLink.addEventListener("click", displayFahrTemp);
 
 let celcLink = document.querySelector("#cel");
-fahrLink.addEventListener("click", displayCelcTemp);
+celcLink.addEventListener("click", displayCelcTemp);
