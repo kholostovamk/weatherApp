@@ -124,3 +124,20 @@ fahrLink.addEventListener("click", displayFahrTemp);
 
 let celcLink = document.querySelector("#cel");
 celcLink.addEventListener("click", displayCelcTemp);
+
+displayForecast();
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  forecastHTML =
+    forecastHTML +
+    `<div class="col day">
+              <h5>Monday</h5>
+              <div class="data">23°/20°</div>
+              <div class="data"><i class="fas fa-cloud-sun-rain"></i></div>
+            </div>`;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
