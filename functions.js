@@ -22,6 +22,25 @@ function getForecast(coordinates) {
   axios.get(apiURL).then(displayForecast);
 }
 
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = ``;
+  forecast.forEach(function (forecastDay) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col day">
+              <h5>${forecastDay.dt}</h5>
+              <div class="data">${forecastDay.temp.max}/${forecastDay.temp.min}</div>
+              <img src="http://openweathermap.org/img/wn${forecastDay.weather[0].icon}@2x.png"
+              alt=""/>
+  
+            </div>`;
+    forecastHTML = forecastHTML + ``;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
 function showTemp(response) {
   celcTemp = Math.round(response.data.main.temp);
   let currentCity = document.querySelector("#city");
@@ -135,21 +154,3 @@ fahrLink.addEventListener("click", displayFahrTemp);
 
 let celcLink = document.querySelector("#cel");
 celcLink.addEventListener("click", displayCelcTemp);
-
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = ``;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col day">
-              <h5>${day}</h5>
-              <div class="data">23°/20°</div>
-              <div class="data"><i class="fas fa-cloud-sun-rain"></i></div>
-            </div>`;
-    forecastHTML = forecastHTML + ``;
-    forecastElement.innerHTML = forecastHTML;
-  });
-}
