@@ -14,6 +14,14 @@ function convToCel(event) {
   temperatureElement.innerHTML = 25;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "2625d6a8fc1f0d27c67c06204d7105e5";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+  console.log(apiURL);
+  axios.get(apiURL).then(displayForecast);
+}
+
 function showTemp(response) {
   celcTemp = Math.round(response.data.main.temp);
   let currentCity = document.querySelector("#city");
@@ -36,6 +44,8 @@ function showTemp(response) {
     "src",
     `https://openweathermap.org/img/wn/${icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function cityChange(event) {
@@ -93,6 +103,7 @@ function moscowTemper(response) {
     "src",
     `https://openweathermap.org/img/wn/${moscowIcon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function positionMoscow(position) {
@@ -125,11 +136,10 @@ fahrLink.addEventListener("click", displayFahrTemp);
 let celcLink = document.querySelector("#cel");
 celcLink.addEventListener("click", displayCelcTemp);
 
-displayForecast();
-
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="row">`;
+  let forecastHTML = ``;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   days.forEach(function (day) {
     forecastHTML =
@@ -139,7 +149,7 @@ function displayForecast() {
               <div class="data">23°/20°</div>
               <div class="data"><i class="fas fa-cloud-sun-rain"></i></div>
             </div>`;
-    forecastHTML = forecastHTML + `</div>`;
+    forecastHTML = forecastHTML + ``;
     forecastElement.innerHTML = forecastHTML;
   });
 }
