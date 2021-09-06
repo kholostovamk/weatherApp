@@ -16,22 +16,35 @@ function getForecast(coordinates) {
   axios.get(apiURL).then(displayForecast);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = ``;
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col day">
-              <h5>${forecastDay.dt}</h5>
-              <div class="data">${forecastDay.temp.max}/${forecastDay.temp.min}</div>
-              <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col day">
+              <h5>${formatDay(forecastDay.dt)}</h5>
+              <div class="data">${Math.round(
+                forecastDay.temp.max
+              )}/${Math.round(forecastDay.temp.min)}</div>
+              <img src="http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
               alt=""/>
   
             </div>`;
-    forecastHTML = forecastHTML + ``;
-    forecastElement.innerHTML = forecastHTML;
+      forecastHTML = forecastHTML + ``;
+      forecastElement.innerHTML = forecastHTML;
+    }
   });
 }
 
