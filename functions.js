@@ -8,12 +8,6 @@ function minutesZero(now) {
 }
 time.innerHTML = `${days[now.getDay()]}, ${hour}: ${minutesZero(now)}`;
 
-function convToCel(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 25;
-}
-
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "2625d6a8fc1f0d27c67c06204d7105e5";
@@ -139,6 +133,3 @@ function displayCelcTemp(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = celcTemp;
 }
-
-let celcLink = document.querySelector("#cel");
-celcLink.addEventListener("click", displayCelcTemp);
