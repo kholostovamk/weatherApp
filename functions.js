@@ -132,25 +132,13 @@ function positionMoscow(position) {
   axios.get(apiURL).then(moscowTemper);
 }
 
-let celcTemp = null;
-
 positionMoscow();
-
-function displayFahrTemp(event) {
-  event.preventDefault();
-  let fahrTemp = (celcTemp * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fahrTemp);
-}
 
 function displayCelcTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = celcTemp;
 }
-
-let fahrLink = document.querySelector("#far");
-fahrLink.addEventListener("click", displayFahrTemp);
 
 let celcLink = document.querySelector("#cel");
 celcLink.addEventListener("click", displayCelcTemp);
