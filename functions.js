@@ -32,7 +32,7 @@ function displayForecast(response) {
       `<div class="col day">
               <h5>${forecastDay.dt}</h5>
               <div class="data">${forecastDay.temp.max}/${forecastDay.temp.min}</div>
-              <img src="http://openweathermap.org/img/wn${forecastDay.weather[0].icon}@2x.png"
+              <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
               alt=""/>
   
             </div>`;
