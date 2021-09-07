@@ -19,7 +19,7 @@ function getForecast(coordinates) {
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Fri", "Sat"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[day];
 }
 
@@ -31,7 +31,8 @@ function displayForecast(response) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `<div class="col day">
+        `
+        <div class="col day">
               <h5>${formatDay(forecastDay.dt)}</h5>
               <div class="data">${Math.round(
                 forecastDay.temp.max
@@ -40,7 +41,6 @@ function displayForecast(response) {
                 forecastDay.weather[0].icon
               }@2x.png"
               alt=""/>
-  
             </div>`;
       forecastHTML = forecastHTML + ``;
       forecastElement.innerHTML = forecastHTML;
