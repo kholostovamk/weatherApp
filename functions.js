@@ -36,7 +36,7 @@ function displayForecast(response) {
               <h5>${formatDay(forecastDay.dt)}</h5>
               <div class="data">${Math.round(
                 forecastDay.temp.max
-              )}/${Math.round(forecastDay.temp.min)}</div>
+              )}°/${Math.round(forecastDay.temp.min)}°</div>
               <img src="http://openweathermap.org/img/wn/${
                 forecastDay.weather[0].icon
               }@2x.png"

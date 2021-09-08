@@ -8,16 +8,27 @@ body {
 
 ul {
   list-style-type: none;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: white;
   font-family: Georgia, "Times New Roman", Times, serif;
-  text-align: left;
+  text-align: center;
+  padding: 0;
 }
 
 h3 {
   color: #fff;
 }
 
+a {
+  color: #aa4f35;
+  text-decoration: none;
+}
+a:active {
+  color: none;
+}
+a:hover {
+  color: #aa4f35;
+}
 #outline {
   max-width: 750px;
   margin-top: 30px;
